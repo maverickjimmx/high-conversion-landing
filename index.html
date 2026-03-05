@@ -6,6 +6,7 @@
     <title>NexGen | Premium Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -23,8 +24,10 @@
             <p>The all-in-one platform designed for professionals who demand speed, security, and seamless integration.</p>
             <div class="cta-group">
                 <button class="btn-primary" onclick="location.href='#pricing'">Get Started Now</button>
-                <p class="small-print">No credit card required for 14-day trial.</p>
             </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426" alt="Dashboard Illustration">
         </div>
     </header>
 
@@ -32,14 +35,17 @@
         <h2>Built for Performance</h2>
         <div class="feature-grid">
             <div class="card">
+                <i data-lucide="zap" class="icon-blue"></i>
                 <h3>Lightning Fast</h3>
                 <p>Optimized engines ensure your data processes in milliseconds, not minutes.</p>
             </div>
             <div class="card">
+                <i data-lucide="shield-check" class="icon-purple"></i>
                 <h3>Top-Tier Security</h3>
                 <p>End-to-end encryption keeps your proprietary information safe and private.</p>
             </div>
             <div class="card">
+                <i data-lucide="globe" class="icon-blue"></i>
                 <h3>Global Access</h3>
                 <p>Sync across all devices instantly with our high-availability cloud network.</p>
             </div>
@@ -57,7 +63,7 @@
                 <li>✓ Advanced Analytics</li>
                 <li>✓ Custom API Access</li>
             </ul>
-            <div class="payment-box">
+            <div class="payment-box" id="payment-area">
                 <input type="text" id="card-num" placeholder="0000 0000 0000 0000" class="pay-input" maxlength="19" autocomplete="cc-number">
                 <div class="row">
                     <input type="text" id="expiry" placeholder="MM / YY" class="pay-input" maxlength="7" autocomplete="cc-exp">
@@ -72,6 +78,11 @@
     <footer>
         <p>&copy; 2026 NexGen Systems. All rights reserved.</p>
     </footer>
+
     <script src="script.js"></script>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
 </body>
 </html>
