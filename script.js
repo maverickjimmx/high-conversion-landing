@@ -2,18 +2,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const payBtn = document.querySelector('.btn-pay');
     const paymentBox = document.querySelector('.payment-box');
     const inputs = document.querySelectorAll('.pay-input');
+    
+    // Select specific inputs for masking
+    const cardInput = document.getElementById('card-num');
+    const expiryInput = document.getElementById('expiry');
+    const cvvInput = document.getElementById('cvv');
+
+    // --- 1. Input Masking Logic ---
+
+    // Card Number: Adds a space every 4 digits
+    if (cardInput) {
+        cardInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); 
+            e.target.value = value.replace(/(\d{4})(?=\d)/g, '$1 ').trim();
+        });
+    }
+
+    // Expiry Date: Adds " / " after the month
+    if (expiryInput) {
+        expiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                e.target.value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+            } else {
+                e.target.value = value;
+            }
+        });
+    }
+
+    // CVV: Restricts to numbers only
+    if (cvvInput) {
+        cvvInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    }
+
+    // --- 2. Payment Submission Logic ---
 
     payBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // 1. Basic Validation
+        // Validation check
         let isValid = true;
         inputs.forEach(input => {
             if (input.value.trim() === '') {
-                input.style.borderColor = '#ef4444'; // Error red
+                input.style.borderColor = '#ef4444'; 
                 isValid = false;
             } else {
-                input.style.borderColor = '#334155'; // Reset to default
+                input.style.borderColor = '#334155'; 
             }
         });
 
@@ -22,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 2. Simulate Payment Processing State
+        // Simulate Processing State
         payBtn.disabled = true;
         payBtn.innerText = 'Processing...';
         payBtn.style.opacity = '0.7';
         payBtn.style.cursor = 'not-allowed';
 
-        // 3. Simulate API Latency (2 seconds)
+        // Simulate API Latency (2 seconds)
         setTimeout(() => {
             renderSuccessState(paymentBox);
         }, 2000);
