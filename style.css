@@ -191,3 +191,19 @@ body {
     margin-top: 1rem;
     color: var(--text-dim);
 }
+
+/* Real-time feedback */
+.pay-input:focus {
+    outline: none;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.success-animation {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
