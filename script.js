@@ -20,17 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. EXPIRY DATE MASKING
+    // 3. Expiry Date: Adds " / " and validates month range (01-12)
     if (expiryInput) {
         expiryInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) {
-                e.target.value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
-            } else {
-                e.target.value = value;
+        let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+        
+        // Month Validation
+        if (value.length >= 1) {
+            // If the first digit is 2-9, it's an invalid month, so prefix with 0
+            if (parseInt(value[0]) > 1) {
+                value = '0' + value;
             }
-        });
-    }
+        }
+        
+        if (value.length >= 2) {
+            let month = parseInt(value.slice(0, 2));
+            if (month > 12) value = '12' + value.slice(2); // Cap month at 12
+            if (month === 0) value = '01' + value.slice(2); // Floor month at 01
+            
+            // Format as MM / YY
+            e.target.value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+        } else {
+            e.target.value = value;
+        }
+    });
+}
 
     // 4. CVV NUMERIC ONLY
     if (cvvInput) {
