@@ -2,25 +2,23 @@
 
 .hero {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;      /* Side-by-side layout */
     align-items: center;
-    padding-top: 120px;
+    justify-content: space-between;
+    padding: 160px 10% 80px;  /* More padding on the sides */
+    gap: 4rem;
     height: auto;
+    text-align: left;         /* Align text to the left */
+}
+
+.hero-content {
+    flex: 1;                  /* Takes up 50% of the space */
 }
 
 .hero-image {
-    width: 80%;
-    max-width: 1000px;
-    margin-top: 4rem;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.hero-image img {
-    width: 100%;
-    display: block;
+    flex: 1;                  /* Takes up the other 50% */
+    margin-top: 0;            /* Remove the top margin */
+    width: 100%;              /* Let flex handle the width */
 }
 
 /* Feature Icons */
