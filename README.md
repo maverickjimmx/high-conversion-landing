@@ -3,7 +3,7 @@
 A premium, responsive landing page designed with a focus on professional aesthetics and frictionless payment conversion. This project features a modern dark-mode UI, streamlined user paths, and a "Problem-Solution-Proof" framework.
 
 ## 🚀 Live Demo
-**[View the Live Site Here](https://yourusername.github.io/your-repo-name/)** *(Note: Replace the link above with your actual GitHub Pages URL)*
+**[View the Live Site Here](https://maverickjimmx.github.io/high-conversion-landing/)** *(Note: Replace the link above with your actual GitHub Pages URL)*
 
 ---
 
