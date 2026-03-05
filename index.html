@@ -58,11 +58,11 @@
                 <li>✓ Custom API Access</li>
             </ul>
             <div class="payment-box">
-                <input type="text" id="card-num" placeholder="0000 0000 0000 0000" class="pay-input" maxlength="19">
-                    <div class="row">
-                        <input type="text" id="expiry" placeholder="MM / YY" class="pay-input" maxlength="7">
-                        <input type="text" id="cvv" placeholder="CVC" class="pay-input" maxlength="3">
-                    </div>
+                <input type="text" id="card-num" placeholder="0000 0000 0000 0000" class="pay-input" maxlength="19" autocomplete="cc-number">
+                <div class="row">
+                    <input type="text" id="expiry" placeholder="MM / YY" class="pay-input" maxlength="7" autocomplete="cc-exp">
+                    <input type="text" id="cvv" placeholder="CVC" class="pay-input" maxlength="3" autocomplete="cc-csc">
+                </div>
                 <button class="btn-pay">Secure Checkout</button>
             </div>
             <p class="secure-text">🔒 Encrypted Secure Payment</p>
