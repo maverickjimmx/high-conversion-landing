@@ -19,7 +19,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevents unwanted side-scrolling */
+    overflow-x: hidden;
 }
 
 /* --- Navigation --- */
@@ -41,7 +41,19 @@ body {
     letter-spacing: 2px;
 }
 
-/* --- Hero Section (Side-by-Side) --- */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* --- Hero Section --- */
 .hero {
     display: flex;
     flex-direction: row;
@@ -58,9 +70,16 @@ body {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Adjusts size based on screen */
+    font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
 }
 
 .gradient-text {
@@ -77,45 +96,98 @@ body {
 
 .hero-image img {
     width: 100%;
-    max-width: 600px; /* Limits the size so it's not too big */
+    max-width: 600px;
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     border: 1px solid rgba(255,255,255,0.1);
-    object-fit: cover;
 }
 
-/* --- Responsive Fix (Mobile) --- */
-@media (max-width: 968px) {
-    .hero {
-        flex-direction: column; /* Stacks text on top of image */
-        text-align: center;
-        padding-top: 120px;
-    }
+/* --- Features Section --- */
+.features {
+    padding: 100px 10%;
+    text-align: center;
+}
 
-    .hero-image {
-        width: 100%;
-        margin-top: 2rem;
-    }
-
-/* --- Features & Pricing (Keep your existing code for these) --- */
-/* ... icons, cards, and pricing box go here ... */
-
-/* Feature Icons */
-.icon-blue { color: var(--primary); margin-bottom: 1.5rem; width: 40px; height: 40px; }
-.icon-purple { color: var(--accent); margin-bottom: 1.5rem; width: 40px; height: 40px; }
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: var(--card-bg);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .card:hover {
     transform: translateY(-10px);
 }
 
-/* Navbar Secondary Button */
+.icon-blue { color: var(--primary); margin-bottom: 1.5rem; width: 40px; height: 40px; }
+.icon-purple { color: var(--accent); margin-bottom: 1.5rem; width: 40px; height: 40px; }
+
+/* --- Pricing & Payment --- */
+.pricing {
+    padding: 100px 10%;
+    background: linear-gradient(180deg, var(--bg) 0%, #1e1b4b 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.pricing-card {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 24px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--primary);
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 1.5rem 0;
+}
+
+.price span { font-size: 1rem; color: var(--text-dim); }
+
+.payment-box {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.pay-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 6px;
+}
+
+.row { display: flex; gap: 10px; }
+
+/* --- Buttons --- */
+.btn-primary {
+    background: var(--primary);
+    color: var(--bg);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .btn-secondary {
     background: transparent;
     color: var(--text);
@@ -125,8 +197,27 @@ body {
     cursor: pointer;
 }
 
-/* Success Animation Polish */
-.success-animation i {
-    color: #10b981;
-    margin-bottom: 1rem;
+.btn-pay {
+    width: 100%;
+    background: white;
+    color: black;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
 }
+
+/* --- Responsive Media Query --- */
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+
+    .hero-image {
+        width: 100%;
+        margin-top: 2rem;
+    }
+} /* <--- This brace was missing! */
