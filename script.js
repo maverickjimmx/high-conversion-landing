@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. SELECT ELEMENTS
     const payBtn = document.querySelector('.btn-pay');
-    const paymentBox = document.querySelector('.payment-box');
+    // Targeting the specific ID you added to your HTML
+    const paymentArea = document.getElementById('payment-area'); 
     const inputs = document.querySelectorAll('.pay-input');
     
     const cardInput = document.getElementById('card-num');
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 e.target.value = value;
             }
-        }); // Correctly closed Section 3
+        }); 
     }
 
     // 4. CVV NUMERIC ONLY
@@ -67,22 +68,31 @@ document.addEventListener('DOMContentLoaded', () => {
             payBtn.disabled = true;
             payBtn.innerText = 'Processing...';
             
+            // Simulating a network delay
             setTimeout(() => {
-                renderSuccessState(paymentBox);
+                if (paymentArea) {
+                    renderSuccessState(paymentArea);
+                }
             }, 2000);
         });
     }
 
     function renderSuccessState(container) {
         container.innerHTML = `
-            <div class="success-animation" style="text-align:center; padding: 2rem;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                <h3 style="color: #38bdf8; margin-bottom: 0.5rem;">Payment Successful!</h3>
-                <p style="color: #94a3b8; font-size: 0.9rem;">Welcome to NexGen. Your account is now active.</p>
+            <div class="success-animation" style="text-align:center; padding: 1rem;">
+                <div style="color: #10b981; margin-bottom: 1rem;">
+                    <i data-lucide="check-circle" style="width: 64px; height: 64px;"></i>
+                </div>
+                <h3 style="color: #38bdf8; margin-bottom: 0.5rem; font-size: 1.5rem;">Payment Successful!</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Welcome to NexGen. Your account is now active.</p>
                 <button onclick="window.location.reload()" 
-                        style="margin-top: 1.5rem; background: transparent; color: white; border: 1px solid #334155; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">
+                        style="background: #38bdf8; color: #0f172a; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%;">
                     Back to Dashboard
                 </button>
             </div>`;
+        // Re-run Lucide to show the new checkmark icon
+        if (window.lucide) {
+            lucide.createIcons();
+        }
     }
 });
